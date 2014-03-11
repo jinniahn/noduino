@@ -26,33 +26,20 @@ define(function() {
       e.preventDefault();
       e2.stop();
     });
-    
-    $('#e2-buttonStart').click(function(e) {
-      e.preventDefault();
-      $('#e2-secondStep .alert').addClass('hide');    
-      
-      if ($('#e2-interval').val()*1 < 25) {
-        $('#e2-secondStep .alert-error').removeClass('hide');
-        $('#e2-secondStep .alert-error').html('Interval less than 25ms is not allowed!');
-      } else if (e2 == null) {
-        $('#e2-secondStep .alert-error').removeClass('hide');
-        $('#e2-secondStep .alert-error').html('Connect to your Arduino first!');      
-      } else {
-        e2.start($('#e2-pinValue').val(), $('#e2-interval').val());
-      }
-    });
-    
+
     $('#e2-buttonConnect').click(function(e) {
       e.preventDefault();
-      
-      $('#e2-exampleConnection .alert').addClass('hide');    
-      $('#e2-exampleConnection .alert-info').removeClass('hide');
-      $('#e2-exampleConnection .alert-info').html('Trying to connect to your Arduino…');      
       require(['example-2'], function(example) {
         e2 = example;
         example.handle();
       });      
     });
+    
+    $('#e2-buttonStart').click(function(e) {
+      e.preventDefault();
+      e2.start($('#e2-pinValue').val(), $('#e2-interval').val());
+    });
+    
     
     $('#e3-buttonConnect').click(function(e) {
       e.preventDefault();

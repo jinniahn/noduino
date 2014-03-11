@@ -40,7 +40,7 @@ define(function(require, exports, module) {
 
   SerialNoduino.prototype.connect = function(options, next) {
     /** This is Server Code: Just works with Node.js **/
-    var Board = require('../../../duino').Board;
+    var Board = require('duino').Board;
     var that = this;
     var board = new Board({'debug': this.options.debug || false});
     

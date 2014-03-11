@@ -12,6 +12,7 @@
     "colors": "*",
     "kickstart": "*",
     "socket.io": "*",
-    "requirejs": "*"
+    "requirejs": "*",
+    "duino":"git://github.com/jinniahn/duino.git"
   }
 }

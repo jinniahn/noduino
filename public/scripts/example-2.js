@@ -3,7 +3,7 @@ define(function() {
     this.board = null;
     this.led = null;
   }
-  
+
   Example2.handle = function() {
     var that = this;
     require(['scripts/libs/Noduino.js', 'scripts/libs/Noduino.Socket.js', 'scripts/libs/Logger.js'], function(NoduinoObj, Connector, Logger) {

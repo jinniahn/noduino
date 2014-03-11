@@ -40,18 +40,16 @@ define(function(require, exports, module) {
 
   SerialNoduino.prototype.connect = function(options, next) {
     /** This is Server Code: Just works with Node.js **/
-    var Board = require('../../../duino/lib/board.js');
+    var Board = require('../../../duino').Board;
     var that = this;
-    new Board({'debug': this.options.debug || false}, function(err, board) {
-      if (err) { return next(new Error('Unable to connect')); }
+    var board = new Board({'debug': this.options.debug || false});
+    
+    // Disabled multi board support now, but keep in mind…
+    that.boards = [board]; 
+    that.board  = 0;
       
-      // Disabled multi board support now, but keep in mind…
-      that.boards = [board]; 
-      that.board  = 0;
-      
-      that.current().on('ready', function(){
-        next(null, board); });
-    });
+    that.current().on('ready', function(){
+      next(null, board); });
   }
 
   SerialNoduino.prototype.withLED = function(pin, next) {
